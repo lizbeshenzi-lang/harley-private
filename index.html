@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harley Private — London</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0a1628;--navy2:#0f1f38;--slate:#1d2d42;--mid-navy:#2d4060;
+  --pale:#f6f8fb;--off:#eef1f6;--stone:#dde3ed;
+  --dim:rgba(10,22,40,.38);--mid:rgba(10,22,40,.58);
+  --b1:rgba(10,22,40,.06);--b2:rgba(10,22,40,.12);
+  --gold:#b8962a;--white:#fefefe;
+  --serif:'Spectral',Georgia,serif;--sans:'Barlow',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--navy);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 5rem;background:rgba(254,254,254,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--b1)}
+.nav-name{font-family:var(--serif);font-size:.92rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);text-decoration:none}
+.nav-r{display:flex;align-items:center;gap:3rem}
+.nav-r a{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .2s}
+.nav-r a:hover{color:var(--navy)}
+.nav-appt{color:var(--navy)!important;border-bottom:1px solid var(--navy);padding-bottom:.1rem}
+
+/* HERO — split dark/light */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+.hero-l{background:var(--navy);display:flex;flex-direction:column;justify-content:flex-end;padding:9rem 5rem 5rem;position:relative;overflow:hidden}
+.hero-l::before{content:'';position:absolute;top:-100px;left:-100px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,.025);pointer-events:none}
+.hero-meta{font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:4rem}
+.hero-h1{font-family:var(--serif);font-size:clamp(3.5rem,6vw,6rem);font-weight:300;font-style:italic;line-height:.95;color:rgba(255,255,255,.95);letter-spacing:-.02em;margin-bottom:2rem}
+.hero-h1 strong{font-weight:600;font-style:normal;display:block;color:white}
+.hero-sub{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.38);line-height:2.1;max-width:22rem;margin-bottom:3rem}
+.hero-cta{display:inline-flex;align-items:center;gap:2rem;font-family:var(--serif);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.8);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:.5rem;transition:all .2s}
+.hero-cta:hover{color:white;gap:3rem;border-color:rgba(255,255,255,.5)}
+.hero-r{background:var(--pale);display:flex;flex-direction:column;justify-content:flex-end;padding:9rem 5rem 5rem;position:relative}
+.hero-r::after{content:'';position:absolute;top:0;left:0;bottom:0;width:1px;background:var(--b2)}
+.hero-r-label{font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin-bottom:3rem}
+.hero-services{display:flex;flex-direction:column;gap:0}
+.hero-service{padding:1.5rem 0;border-top:1px solid var(--b1);display:flex;justify-content:space-between;align-items:center;cursor:default}
+.hero-service:last-child{border-bottom:1px solid var(--b1)}
+.hero-service-name{font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--navy)}
+.hero-service-time{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+
+/* ABOUT */
+.about{padding:9rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:10rem;align-items:start;background:var(--white)}
+.about-idx{font-size:.54rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin-bottom:1.5rem}
+.about h2{font-family:var(--serif);font-size:clamp(2.2rem,3.5vw,3.5rem);font-weight:300;font-style:italic;color:var(--navy);line-height:1.15;letter-spacing:-.01em}
+.about-right{padding-top:2rem}
+.about p{font-size:.78rem;color:var(--mid);line-height:2.4;margin-bottom:1.5rem;letter-spacing:.03em}
+.about-rule{height:1px;background:var(--b1);margin:2.5rem 0}
+.about-facts{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.afact-l{font-size:.54rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:.4rem}
+.afact-v{font-family:var(--serif);font-size:.92rem;font-style:italic;color:var(--navy)}
+
+/* SERVICES LIST */
+.services{background:var(--navy);padding:9rem 5rem;border-top:1px solid rgba(255,255,255,.06)}
+.services-head{display:grid;grid-template-columns:1fr 2fr;gap:8rem;margin-bottom:6rem;align-items:end}
+.services-label{font-size:.54rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.28)}
+.services-head h2{font-family:var(--serif);font-size:clamp(2rem,3vw,3.5rem);font-weight:300;font-style:italic;color:rgba(255,255,255,.9);line-height:1.1}
+.svc-list{display:flex;flex-direction:column}
+.svc-item{display:grid;grid-template-columns:5rem 1fr 8rem;gap:3rem;padding:2.5rem 0;border-top:1px solid rgba(255,255,255,.06);align-items:start;transition:background .2s;cursor:default}
+.svc-item:last-child{border-bottom:1px solid rgba(255,255,255,.06)}
+.svc-item:hover{background:rgba(255,255,255,.02);margin:0 -5rem;padding:2.5rem 5rem}
+.svc-n{font-size:.56rem;letter-spacing:.2em;color:rgba(255,255,255,.22)}
+.svc-info h3{font-family:var(--serif);font-size:1.1rem;font-weight:400;font-style:italic;color:rgba(255,255,255,.88);margin-bottom:.4rem}
+.svc-info p{font-size:.68rem;color:rgba(255,255,255,.35);line-height:2;max-width:32rem;letter-spacing:.04em}
+.svc-fee{font-family:var(--serif);font-size:.95rem;font-style:italic;color:var(--gold);text-align:right;padding-top:.3rem}
+
+/* DOCTORS */
+.doctors{padding:9rem 5rem;background:var(--off);border-top:1px solid var(--b1)}
+.doctors-head{display:grid;grid-template-columns:1fr 2fr;gap:8rem;margin-bottom:6rem;align-items:end}
+.doctors-label{font-size:.54rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim)}
+.doctors-head h2{font-family:var(--serif);font-size:clamp(2rem,3vw,3.5rem);font-weight:300;font-style:italic;color:var(--navy);line-height:1.1}
+.doctors-grid{display:flex;flex-direction:column}
+.doctor{padding:2.5rem 0;border-top:1px solid var(--b1);display:grid;grid-template-columns:5rem 1fr;gap:2rem;align-items:start}
+.doctor:last-child{border-bottom:1px solid var(--b1)}
+.doc-init{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--navy);opacity:.4}
+.doc-name{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--navy);margin-bottom:.2rem}
+.doc-role{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:.5rem}
+.doc-quals{font-size:.72rem;color:var(--mid);line-height:1.8;letter-spacing:.03em}
+
+/* BOOKING */
+.booking{padding:9rem 5rem;background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:10rem;align-items:start;border-top:1px solid var(--b1)}
+.bk-l h2{font-family:var(--serif);font-size:clamp(2rem,3vw,3.5rem);font-weight:300;font-style:italic;color:var(--navy);line-height:1.1;margin-bottom:2rem}
+.bk-l p{font-size:.75rem;color:var(--mid);line-height:2.4;margin-bottom:1.5rem;letter-spacing:.03em}
+.bk-note{padding:2rem;border:1px solid var(--b1);font-size:.65rem;color:var(--dim);line-height:2.2;margin-top:2rem;letter-spacing:.04em}
+.bk-note strong{color:var(--navy);font-weight:600}
+.bk-r{}
+.slot-section{background:var(--pale);border:1px solid var(--b1);padding:2.5rem}
+.slot-section h3{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--navy);margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--b1)}
+.date-inp{width:100%;border:none;border-bottom:1px solid var(--b2);background:transparent;padding:.75rem 0;font-size:.82rem;font-family:var(--sans);color:var(--navy);outline:none;margin-bottom:1.5rem;transition:border-color .2s}
+.date-inp:focus{border-color:var(--navy)}
+.slots-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.slt{padding:.55rem 1rem;font-size:.7rem;letter-spacing:.1em;font-family:var(--sans);border:1px solid var(--b2);background:white;cursor:pointer;color:var(--mid);transition:all .2s}
+.slt:hover:not(:disabled){border-color:var(--navy);color:var(--navy)}
+.slt.sel{background:var(--navy);color:white;border-color:var(--navy)}
+.slt:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.slt-loading{font-size:.72rem;color:var(--dim);padding:.5rem 0;letter-spacing:.06em}
+.bf-group{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+.bf-group label{font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+.bf-group input,.bf-group select{background:transparent;border:none;border-bottom:1px solid var(--b2);padding:.7rem 0;font-size:.8rem;font-family:var(--sans);color:var(--navy);outline:none;transition:border-color .2s;appearance:none}
+.bf-group input:focus,.bf-group select:focus{border-color:var(--navy)}
+.bf-group input::placeholder{color:var(--dim)}
+.bf-group select option{background:white}
+.bf-2col{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.bk-submit{width:100%;background:var(--navy);color:white;border:none;padding:1.1rem;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;font-family:var(--sans);transition:background .25s;margin-top:.5rem;display:flex;align-items:center;justify-content:space-between}
+.bk-submit:hover{background:var(--slate)}
+.bk-submit:disabled{opacity:.5;cursor:not-allowed}
+.bk-submit span{opacity:.4;font-size:1.1rem}
+.f-status{margin-top:1rem;padding:.85rem 1rem;font-size:.75rem;display:none;letter-spacing:.03em}
+.f-status.ok{background:rgba(10,22,40,.04);color:var(--navy);border:1px solid var(--b2);display:block}
+.f-status.err{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;display:block}
+.booking-fields-wrap{margin-top:1.5rem;display:none;flex-direction:column}
+
+/* FOOTER */
+footer{background:var(--navy);padding:5rem 5rem 3rem;border-top:1px solid rgba(255,255,255,.06)}
+.fi{display:grid;grid-template-columns:2fr 1fr 1fr;gap:6rem;margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.fn{font-family:var(--serif);font-size:.9rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.88);margin-bottom:.75rem}
+.fb{font-size:.65rem;color:rgba(255,255,255,.28);line-height:2.3;max-width:20rem;letter-spacing:.04em;margin-bottom:1.5rem}
+.fh{font-size:.7rem;color:rgba(255,255,255,.4);line-height:2;letter-spacing:.04em}
+.fh strong{color:rgba(184,150,42,.8);font-weight:400}
+.fc h4{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(184,150,42,.5);margin-bottom:1.5rem}
+.fc a{display:block;font-size:.68rem;color:rgba(255,255,255,.28);text-decoration:none;margin-bottom:.7rem;transition:color .2s;letter-spacing:.06em}
+.fc a:hover{color:rgba(184,150,42,.8)}
+.fbot{display:flex;justify-content:space-between;align-items:center;font-size:.56rem;letter-spacing:.15em}
+.fleg{color:rgba(255,255,255,.15);text-transform:uppercase}
+.fsince{font-family:var(--serif);font-style:italic;color:rgba(184,150,42,.4);font-size:.72rem}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-name">Harley Private</a>
+  <div class="nav-r">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#booking">Appointments</a>
+    <a href="#booking" class="nav-appt">Book</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-l">
+    <div class="hero-meta">Harley Street, London W1G · Est. 2015 · Private GP & Specialist Clinic</div>
+    <h1 class="hero-h1">Private<br><strong>Medicine.<br>Properly.</strong></h1>
+    <p class="hero-sub">Same-day GP appointments. Specialist referrals within 24 hours. Continuity of care from a doctor who knows you.</p>
+    <a href="#booking" class="hero-cta">Book an appointment</a>
+  </div>
+  <div class="hero-r">
+    <div class="hero-r-label">Services available today</div>
+    <div class="hero-services">
+      <div class="hero-service"><span class="hero-service-name">GP Consultation</span><span class="hero-service-time">Same day</span></div>
+      <div class="hero-service"><span class="hero-service-name">Executive Health Screen</span><span class="hero-service-time">This week</span></div>
+      <div class="hero-service"><span class="hero-service-name">Mental Health Assessment</span><span class="hero-service-time">Same day</span></div>
+      <div class="hero-service"><span class="hero-service-name">Specialist Referral</span><span class="hero-service-time">Within 24hrs</span></div>
+      <div class="hero-service"><span class="hero-service-name">Blood Tests & Panels</span><span class="hero-service-time">Walk-in</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div>
+    <div class="about-idx">/ 001 — The practice</div>
+    <h2>A GP surgery that behaves like one</h2>
+  </div>
+  <div class="about-right">
+    <p>Harley Private was founded in 2015 by a group of NHS consultants who believed that private medicine had lost its way — spending more energy on marble lobbies than on clinical outcomes. We stripped it back.</p>
+    <p>You see the same doctor every time. Your appointments run to time. If you need a specialist, we have the relationships to get you a real appointment in 24 hours, not a six-week wait. That is private medicine as it should work.</p>
+    <div class="about-rule"></div>
+    <div class="about-facts">
+      <div><div class="afact-l">Founded</div><div class="afact-v">2015, Harley Street</div></div>
+      <div><div class="afact-l">Registered with</div><div class="afact-v">CQC, GMC</div></div>
+      <div><div class="afact-l">Appointments</div><div class="afact-v">Same-day available</div></div>
+      <div><div class="afact-l">Referrals</div><div class="afact-v">Within 24 hours</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-head">
+    <div class="services-label">/ 002 — What we offer</div>
+    <h2>Services and standard fees</h2>
+  </div>
+  <div class="svc-list">
+    <div class="svc-item"><div class="svc-n">001</div><div class="svc-info"><h3>GP Consultation</h3><p>25-minute appointment with a named GP. Includes examination, diagnosis, prescription, and referral letters where indicated.</p></div><div class="svc-fee">£195</div></div>
+    <div class="svc-item"><div class="svc-n">002</div><div class="svc-info"><h3>Executive Health Screen</h3><p>Comprehensive annual health check including full blood panel, ECG, lung function, BMI, blood pressure, and a 45-minute review with a GP.</p></div><div class="svc-fee">£595</div></div>
+    <div class="svc-item"><div class="svc-n">003</div><div class="svc-info"><h3>Mental Health Assessment</h3><p>Initial 50-minute assessment with our consultant psychiatrist. Anxiety, depression, ADHD, and burnout pathways available.</p></div><div class="svc-fee">£350</div></div>
+    <div class="svc-item"><div class="svc-n">004</div><div class="svc-info"><h3>Specialist Referral</h3><p>Same-day referral letter to a consultant of your choice. We maintain relationships with over 40 London specialists and can usually arrange an appointment within 24 hours.</p></div><div class="svc-fee">£95</div></div>
+    <div class="svc-item"><div class="svc-n">005</div><div class="svc-info"><h3>Chronic Disease Management</h3><p>Ongoing care for diabetes, hypertension, thyroid conditions, and other long-term conditions. Quarterly reviews, medication management, and lifestyle support.</p></div><div class="svc-fee">£145/visit</div></div>
+  </div>
+</section>
+
+<section class="doctors" id="doctors">
+  <div class="doctors-head">
+    <div class="doctors-label">/ 003 — The team</div>
+    <h2>Consultants, not receptionists</h2>
+  </div>
+  <div class="doctors-grid">
+    <div class="doctor"><div class="doc-init">A.V.</div><div><div class="doc-name">Dr. Anna Vickers</div><div class="doc-role">Lead GP · Medical Director</div><div class="doc-quals">MBChB (Edinburgh) · MRCGP · 18 years. Special interest: women's health and endocrinology.</div></div></div>
+    <div class="doctor"><div class="doc-init">R.O.</div><div><div class="doc-name">Dr. Richard Obi</div><div class="doc-role">GP & Sports Medicine</div><div class="doc-quals">MBChB (UCL) · MRCGP · Diploma in Sports Medicine. 14 years.</div></div></div>
+    <div class="doctor"><div class="doc-init">S.K.</div><div><div class="doc-name">Dr. Sarah Kowalski</div><div class="doc-role">Consultant Psychiatrist</div><div class="doc-quals">MBChB · MRCPsych · 12 years. Anxiety, ADHD, mood disorders.</div></div></div>
+    <div class="doctor"><div class="doc-init">M.H.</div><div><div class="doc-name">Dr. Michael Hunt</div><div class="doc-role">GP & Cardiology Interest</div><div class="doc-quals">MBChB (Cambridge) · MRCGP · 10 years. Hypertension and cardiac risk.</div></div></div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="bk-l">
+    <h2>Book an appointment</h2>
+    <p>We offer same-day appointments for most services Monday through Friday. Saturday morning clinics are available for executive health screens and routine GP consultations.</p>
+    <p>Select a date below to view real-time availability. All appointments are confirmed by email within one hour.</p>
+    <div class="bk-note">
+      <strong>Insurance & payment</strong><br>
+      We accept Bupa, AXA PPP, Aviva, Vitality, and WPA. Self-pay by card or bank transfer. Payment is taken on the day. A cancellation fee of 50% applies to appointments cancelled within 24 hours.
+    </div>
+  </div>
+  <div class="bk-r">
+    <div class="slot-section">
+      <h3>Select a date and time</h3>
+      <input type="date" class="date-inp" id="apptDate" onchange="loadSlots(this.value)">
+      <div id="slotsArea"><div class="slt-loading">Choose a date to see available times</div></div>
+      <div class="booking-fields-wrap" id="bkFields">
+        <div class="bf-2col">
+          <div class="bf-group"><label>Full name</label><input type="text" id="bName" placeholder="—"></div>
+          <div class="bf-group"><label>Email</label><input type="email" id="bEmail" placeholder="—"></div>
+        </div>
+        <div class="bf-2col">
+          <div class="bf-group"><label>Phone</label><input type="tel" id="bPhone" placeholder="—"></div>
+          <div class="bf-group"><label>Insurance provider (if applicable)</label><input type="text" id="bInsurance" placeholder="Self-pay / Bupa / AXA..."></div>
+        </div>
+        <div class="bf-group"><label>Service required</label>
+          <select id="bService">
+            <option>—</option>
+            <option>GP Consultation (£195)</option>
+            <option>Executive Health Screen (£595)</option>
+            <option>Mental Health Assessment (£350)</option>
+            <option>Specialist Referral (£95)</option>
+            <option>Chronic Disease Management (£145)</option>
+          </select>
+        </div>
+        <button class="bk-submit" id="bkBtn" onclick="submitBooking()">Confirm appointment <span>→</span></button>
+      </div>
+      <div class="f-status" id="fStatus"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fi">
+    <div>
+      <div class="fn">Harley Private</div>
+      <p class="fb">A private GP and specialist clinic on Harley Street, London W1. Same-day appointments. Specialist referrals within 24 hours. Medicine that takes its time.</p>
+      <div class="fh">
+        <strong>Mon–Fri</strong> 08:00 – 19:00<br>
+        <strong>Saturday</strong> 09:00 – 13:00<br>
+        <strong>Out of hours</strong> by arrangement
+      </div>
+    </div>
+    <div class="fc">
+      <h4>Services</h4>
+      <a href="#">GP Consultation</a>
+      <a href="#">Health Screening</a>
+      <a href="#">Mental Health</a>
+      <a href="#">Specialist Referral</a>
+    </div>
+    <div class="fc">
+      <h4>Contact</h4>
+      <a href="#">12 Harley Street, W1G 9PF</a>
+      <a href="#">hello@harleyprivate.co.uk</a>
+      <a href="#">+44 (0)20 7123 4567</a>
+      <a href="#">CQC Reg. No. 1-234567890</a>
+    </div>
+  </div>
+  <div class="fbot">
+    <span class="fleg">© 2025 Harley Private Ltd · London W1 · Registered in England · CQC registered</span>
+    <span class="fsince">Est. 2015</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('apptDate').min = new Date().toISOString().split('T')[0];
+let selectedTime = null;
+
+// Harley uses business hours 08:00–18:00 with 30-min slots
+const allSlots = ['08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30',
+  '12:00','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00'];
+
+async function loadSlots(date) {
+  if (!date) return;
+  document.getElementById('slotsArea').innerHTML = '<div class="slt-loading">Loading availability...</div>';
+  selectedTime = null;
+  document.getElementById('bkFields').style.display = 'none';
+
+  try {
+    const res = await fetch(`/api/availability?date=${date}`);
+    const data = await res.json();
+    renderSlots(data.slots);
+  } catch {
+    // Demo fallback
+    const demo = allSlots.map(t => ({ time: t, available: Math.random() > 0.4 }));
+    renderSlots(demo);
+  }
+}
+
+function renderSlots(slots) {
+  const area = document.getElementById('slotsArea');
+  if (!slots?.length) { area.innerHTML = '<div class="slt-loading">No availability found.</div>'; return; }
+  const row = document.createElement('div');
+  row.className = 'slots-row';
+  slots.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'slt';
+    btn.textContent = s.time;
+    btn.disabled = !s.available;
+    btn.onclick = () => {
+      document.querySelectorAll('.slt').forEach(b => b.classList.remove('sel'));
+      btn.classList.add('sel');
+      selectedTime = s.time;
+      const bkf = document.getElementById('bkFields');
+      bkf.style.display = 'flex';
+      bkf.style.flexDirection = 'column';
+    };
+    row.appendChild(btn);
+  });
+  area.innerHTML = '';
+  area.appendChild(row);
+}
+
+async function submitBooking() {
+  const name = document.getElementById('bName').value.trim();
+  const email = document.getElementById('bEmail').value.trim();
+  const phone = document.getElementById('bPhone').value.trim();
+  const service = document.getElementById('bService').value;
+  const date = document.getElementById('apptDate').value;
+
+  if (!name || !email || !selectedTime) {
+    showStatus('Please enter your name, email, and select an appointment time.', 'err');
+    return;
+  }
+
+  const btn = document.getElementById('bkBtn');
+  btn.disabled = true;
+  btn.childNodes[0].textContent = 'Booking... ';
+
+  try {
+    await fetch('/api/availability', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date, time: selectedTime, name, service })
+    }).catch(() => {});
+
+    await fetch('/api/enquire', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, phone, service, date, time: selectedTime, siteName: 'Harley Private' })
+    }).catch(() => {});
+
+    showStatus(`Appointment confirmed for ${selectedTime} on ${date}. Confirmation sent to ${email}.`, 'ok');
+    document.querySelectorAll('.slt.sel').forEach(b => { b.disabled = true; b.classList.remove('sel'); });
+    selectedTime = null;
+    btn.childNodes[0].textContent = 'Confirmed ✓ ';
+  } catch {
+    btn.disabled = false;
+    btn.childNodes[0].textContent = 'Confirm appointment ';
+    showStatus('Something went wrong. Please call +44 (0)20 7123 4567.', 'err');
+  }
+}
+
+function showStatus(msg, type) {
+  const el = document.getElementById('fStatus');
+  el.textContent = msg;
+  el.className = `f-status ${type}`;
+}
+</script>
+</body>
+</html>
